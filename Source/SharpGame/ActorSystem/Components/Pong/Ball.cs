@@ -71,6 +71,7 @@ namespace GameFramework
                         else facing -= (facing % 90) * 2;
                     }
                     else facing += 180;
+                    speed += .01f;
                     break;
 
                 default:   

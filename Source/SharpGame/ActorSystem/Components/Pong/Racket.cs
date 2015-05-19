@@ -31,7 +31,7 @@ namespace GameFramework
                 MoveDown(deltaTime * speed*Acseleration);
                 Acseleration ++;
             }
-            else Acseleration = 1;
+            else Acseleration = .6f;
         }
 
         public override void OnDestroy()
