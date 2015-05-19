@@ -6,76 +6,24 @@ using System.Threading.Tasks;
 
 namespace GameFramework
 {
-    public class Graphics
+    class Graphics
     {
-        private GraphicPrimitive[,] frontBuffer;
-        private GraphicPrimitive[,] backBuffer;
-
-        public int Width { get; private set; }
-        public int Height { get; private set; }
-
-        public Graphics() : this(Console.WindowWidth, Console.WindowHeight)
+        private GraphicsPrimitive [,] Buffer;
+        GraphicsPrimitive[,] Copy;
+        public Graphics ()
         {
+            Buffer = new GraphicsPrimitive [20,20];
+            Copy = new GraphicsPrimitive[Buffer.GetLength(0), Buffer.GetLength(1)];
         }
-
-        public Graphics(int width, int height)
+        public void NextScreen ()
         {
-            Width = width;
-            Height = height;
 
-            frontBuffer = new GraphicPrimitive[Height, Width];
-            backBuffer = new GraphicPrimitive[Height, Width];
-
-            Console.CursorVisible = false;
+            if (!Buffer[1, 1].Compare(Copy[1, 1]))
+            {;}
+            var tmp=Buffer;
+            Buffer=Copy;
+            Copy = tmp;
         }
-
-        public void ClearBuffer()
-        {
-            for (int y = 0; y < Height; y++)
-            {
-                for (int x = 0; x < Width; x++)
-                {
-                    frontBuffer[y, x] = new GraphicPrimitive(' ', ConsoleColor.White, ConsoleColor.Black, float.MinValue);
-                }
-            }
-        }
-
-
-        public void DrawOnScreen()
-        {
-            for (int y = 0; y < Height; y++)
-            {
-                for (int x = 0; x < Width; x++)
-                {
-                    if (frontBuffer[y, x] != backBuffer[y, x])
-                        DrawPrimitiveOnScreen(x, y, frontBuffer[y, x]);
-                }
-            }
-        }
-
-        public void SwapBuffers()
-        {
-            var temp = frontBuffer;
-            frontBuffer = backBuffer;
-            backBuffer = temp;
-        }
-
-        public void DrawPrimitive(int x, int y, GraphicPrimitive primitive)
-        {
-            if (x < 0 || x >= Width || y < 0 || y >= Height)
-                return;
-
-            if (frontBuffer[y, x].depth < primitive.depth)
-                frontBuffer[y, x] = primitive;
-        }
-
-        private void DrawPrimitiveOnScreen(int x, int y, GraphicPrimitive primitive)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.BackgroundColor = primitive.backgroundColor;
-            Console.ForegroundColor = primitive.foregroundColor;
-
-            Console.Write(primitive.symbol);
-        }
+        
     }
 }
