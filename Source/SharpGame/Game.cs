@@ -8,15 +8,21 @@ namespace GameFramework
     {
         public int TargetFPS { get; set; }
 
-        public Graphics Graphics { get; private set; }
+        public Resolution Resolution;
+        public Graphics Graphics;
+        public Physics Physics;
+        public string Name;
 
         private bool initialized;
         private bool runing;
         private bool exitQueued;
 
-        public bool Initialize()
+        public bool Initialize(string name)
         {
-            Graphics = new Graphics();
+            Name = name;
+            Resolution = new Resolution(40,25);
+            Graphics = new Graphics(Resolution);
+            Physics = new Physics(Resolution);
 
             initialized = true;
             return true;
@@ -39,12 +45,12 @@ namespace GameFramework
                 float delta = time.ElapsedMilliseconds / 1000f;
                 time.Restart();
 
-                Graphics.ClearBuffer();
+                Physics.BufferClear();
+                Graphics.BufferClear();
                 scene.Update(delta);
                 scene.Draw(delta);
-                Graphics.DrawOnScreen();
-                Graphics.SwapBuffers();
-
+                Graphics.DrawFrame();
+                //Graphics.SwapBuffers();
                 SleepToMatchFramerate(TargetFPS, time.ElapsedMilliseconds / 1000f);
             }
 

@@ -52,12 +52,12 @@ namespace GameFramework
 
         public Vector3 LocalPosition { get; set; }
 
-        private ComponentContainer componentContainer;
+        private ComponentContainer Components;
 
         public Actor(string name = "Actor")
         {
             this.Name = name;
-            componentContainer = new ComponentContainer(this);
+            Components = new ComponentContainer(this);
         }
 
         public override void AddChild(Actor actor)
@@ -75,46 +75,53 @@ namespace GameFramework
 
         public override void Start()
         {
-            componentContainer.Start();
+            Components.Start();
 
             base.Start();
         }
 
         public override void Update(float deltaTime)
         {
-            componentContainer.Update(deltaTime);
+            Components.Update(deltaTime);
 
             base.Update(deltaTime);
         }
 
         public override void Draw(float deltaTime)
         {
-            componentContainer.Draw(deltaTime);
+            Components.Draw(deltaTime);
 
             base.Draw(deltaTime);
         }
 
         public override void OnDestroy()
         {
-            componentContainer.OnDestroy();
-            componentContainer = null;
+            Components.OnDestroy();
+            Components = null;
 
             base.OnDestroy();
         }
 
         public void AddComponent(ActorComponent component)
         {
-            componentContainer.AddChild(component);
+            Components.AddChild(component);
         }
 
         public WeakReference<TComponent> GetComponent<TComponent>() where TComponent : class
         {
-            return componentContainer.GetComponent<TComponent>();
+            return Components.Get<TComponent>();
         }
 
         public List<WeakReference<TComponent>> GetAllComponents<TComponent>() where TComponent : class
         {
-            return componentContainer.GetAllComponents<TComponent>();
+            return Components.GetAll<TComponent>();
         }
+        public void OnColide(Actor Exciter)
+        {
+            this.Components.OnCollide(Exciter);
+            foreach (Actor Child in this.children)
+                Child.Components.OnCollide(Exciter);
+        }
+
     }
 }

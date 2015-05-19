@@ -1,29 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿﻿using System;
 
 namespace GameFramework
-{
-    class Graphics
+{ 
+    public class Graphics
     {
         private GraphicsPrimitive [,] Buffer;
-        GraphicsPrimitive[,] Copy;
-        public Graphics ()
+      //private GraphicsPrimitive [,] Copy;
+        private Resolution Resolution;
+        public GraphicsPrimitive[,] this[int x, int y]
         {
-            Buffer = new GraphicsPrimitive [20,20];
-            Copy = new GraphicsPrimitive[Buffer.GetLength(0), Buffer.GetLength(1)];
+            get
+            {
+                return this[y, x];
+            }
+            private set
+            {
+                this[y, x] = value;
+            }
         }
-        public void NextScreen ()
+        public Graphics (Resolution Resolution)
         {
-
-            if (!Buffer[1, 1].Compare(Copy[1, 1]))
-            {;}
-            var tmp=Buffer;
-            Buffer=Copy;
-            Copy = tmp;
+            this.Resolution = Resolution;
+            Buffer = new GraphicsPrimitive [Resolution.x,Resolution.y];
+            Console.CursorVisible = false;
+            //Copy = new GraphicsPrimitive [Resolution.Y, Resolution.X];
         }
-        
+       
+        public void PointChange (int x,int y, GraphicsPrimitive Symbol)
+        {
+            if (Symbol.Deep>=Buffer[x,y].Deep)
+            Buffer[x, y] = Symbol;
+        }
+        public void DrawFrame ()
+        {
+            for (int y=0;y<Resolution.y;y++)
+            {
+                for (int x = 0; x < Resolution.x;x++)
+                {
+                    Buffer[x, y].PrintTo(x, y);
+                }
+            }
+        }
+        public void BufferClear()
+        {
+            for (int y = 0; y < Resolution.y; y++)
+            {
+                for (int x = 0; x < Resolution.x; x++)
+                {
+                    Buffer[x, y] = GraphicsPrimitive.Empty;
+                }
+            }
+        }
     }
 }

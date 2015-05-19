@@ -61,9 +61,9 @@
     <Compile Include="ActorSystem\Components\Tetris\Piece.cs" />
     <Compile Include="ActorSystem\Components\Tetris\Stack.cs" />
     <Compile Include="ActorSystem\Physics\Physics.cs" />
-    <Compile Include="Graphics\GraphicPrimitive.cs" />
     <Compile Include="Graphics\Graphics.cs" />
     <Compile Include="Graphics\GraphicsPrimitive.cs" />
+    <Compile Include="Graphics\Resolution.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Math\Vector3.cs" />

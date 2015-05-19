@@ -11,5 +11,7 @@
 		void Draw (float deltaTime);
 
         void OnDestroy();
+
+        void OnCollide(Actor Exciter);
     }
 }

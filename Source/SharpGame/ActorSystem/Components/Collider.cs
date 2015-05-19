@@ -26,7 +26,7 @@ namespace GameFramework
         private void Place()
         {
             foreach (Vector3 Deviation in ColliderPoints)
-                Game.Physics.Place(Parent.Position+Deviation, Parent);
+                Game.Physics.Place(Actor.WorldPosition+Deviation, Actor);
         }
 
         public void AddPoint(Vector3 point)
@@ -36,7 +36,7 @@ namespace GameFramework
 
         private void Initialize()
         {
-            switch (Parent.Name)
+            switch (Actor.Name)
             {
                 case "Racket":
                     for (int i = -3; i < 4; i++)
@@ -54,7 +54,7 @@ namespace GameFramework
                     }
                     break;
 
-                case "Field":
+                case "GameInterface":
                     for (int x = 1; x < Game.Resolution.x-1; x++)
                     {
                         AddPoint(new Vector3(x, 0, 0));

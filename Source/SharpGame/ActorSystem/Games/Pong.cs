@@ -17,43 +17,43 @@ namespace GameFramework
             Racket racket = new Racket();
             racket.SetControlsUp(ConsoleKey.W);
             racket.SetControlsDown(ConsoleKey.S);
-            LeftPlayer.AddEntity(racket);
-            LeftPlayer.AddEntity(new ASCIIPainter());
-            LeftPlayer.AddEntity(new Collider());
+            LeftPlayer.AddComponent(racket);
+            LeftPlayer.AddComponent(new ASCIIPainter());
+            LeftPlayer.AddComponent(new Collider());
             
             
             RightPlayer = new Actor();
             Racket racket2 = new Racket();
             racket2.SetControlsUp(ConsoleKey.UpArrow);
             racket2.SetControlsDown(ConsoleKey.DownArrow);         
-            RightPlayer.AddEntity(racket2);
-            RightPlayer.AddEntity(new ASCIIPainter());
-            RightPlayer.AddEntity(new Collider());
+            RightPlayer.AddComponent(racket2);
+            RightPlayer.AddComponent(new ASCIIPainter());
+            RightPlayer.AddComponent(new Collider());
 
             
             ball = new Actor();
-            ball.AddEntity(new Ball());
-            ball.AddEntity(new Collider());
-            ball.AddEntity(new ASCIIPainter());
+            ball.AddComponent(new Ball());
+            ball.AddComponent(new Collider());
+            ball.AddComponent(new ASCIIPainter());
             
             
             field = new Actor();
-            field.AddEntity(new GameInterface()); 
-            field.AddEntity(new Collider());
+            field.AddComponent(new GameInterface()); 
+            field.AddComponent(new Collider());
             
             
             LeftCounter= new Actor();
-            LeftCounter.AddEntity(new ScoreCounter());
+            LeftCounter.AddComponent(new ScoreCounter());
             //LeftCounter.AddEntity(new ASCIIPainter());
-            LeftCounter.AddEntity(new Collider());
+            LeftCounter.AddComponent(new Collider());
 
 
             RightCounter = new Actor();
             ScoreCounter ScoreCounter = new ScoreCounter();
             ScoreCounter.ForRightPlayer();
-            RightCounter.AddEntity(ScoreCounter);
+            RightCounter.AddComponent(ScoreCounter);
             //RightCounter.AddEntity(new ASCIIPainter());
-            RightCounter.AddEntity(new Collider());
+            RightCounter.AddComponent(new Collider());
 
             scene = new Scene();
             SetPositions();
@@ -69,18 +69,18 @@ namespace GameFramework
 
         private void SetPositions()
         {
-            LeftPlayer.Position = new Vector3(1.1F, 10, 0);
-            RightPlayer.Position = new Vector3(38.9F, 10, 0);
+            LeftPlayer.WorldPosition = new Vector3(1.1F, 10, 0);
+            RightPlayer.WorldPosition = new Vector3(38.9F, 10, 0);
         }
 
         private void AddAllToScene()
         {
-            scene.AddEntity(LeftPlayer);
-            scene.AddEntity(RightPlayer);
-            scene.AddEntity(ball);
-            scene.AddEntity(field);
-            scene.AddEntity(LeftCounter);
-            scene.AddEntity(RightCounter);
+            scene.AddChild(LeftPlayer);
+            scene.AddChild(RightPlayer);
+            scene.AddChild(ball);
+            scene.AddChild(field);
+            scene.AddChild(LeftCounter);
+            scene.AddChild(RightCounter);
         }
     }
 }

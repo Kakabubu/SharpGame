@@ -9,7 +9,7 @@ namespace GameFramework
         { }
         public override void Start()
         {
-            Parent.Name = this.GetType().Name;
+            Actor.Name = this.GetType().Name;
             Console.BackgroundColor = ConsoleColor.White;
         }
         public override void Update(float deltaTime)
@@ -24,9 +24,7 @@ namespace GameFramework
         { }
 
         public override void OnCollide(Actor Actor)
-        {
-            Console.Beep();
-        }
+        { }
         /* here must be emmm... in fact the main point is to set the name of actor, 
          * so other components would be able to initialize it and return the right information
          * maby it wolud be better to connect score painter, field, etc. here.

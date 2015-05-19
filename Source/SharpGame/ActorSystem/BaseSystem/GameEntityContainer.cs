@@ -64,5 +64,12 @@ namespace GameFramework.Internal
 
             children.Clear();
         }
+        public virtual void OnCollide(Actor Exciter)
+        {
+            for (int i = 0; i < children.Count; i++)
+            {
+                children[i].OnCollide(Exciter);
+            }
+        }
     }
 }

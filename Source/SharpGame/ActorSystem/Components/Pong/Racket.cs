@@ -7,38 +7,48 @@ namespace GameFramework
         public ConsoleKey Up;
         public ConsoleKey Down;
         private int speed;
+        float Acseleration;
 
         public override void Awake()
-        {}
+        {
+            speed = 3;
+            Acseleration = .6f;
+        }
         public override void Start()
         {
-            Parent.Name = this.GetType().Name;
+            Actor.Name = this.GetType().Name;
         }
 
         public override void Update(float deltaTime)
         {
-            if (Input.IsKeyDown(Up) && Parent.Position.y > 0)
-                MoveUp(deltaTime*speed);
-            if (Input.IsKeyDown(Down) && Parent.Position.y < Game.Resolution.y - 1)
-                MoveDown(deltaTime*speed);
+            if (Input.IsKeyDown(Up) && Actor.LocalPosition.y > 0)
+            {
+                MoveUp(deltaTime * speed*Acseleration);
+                Acseleration ++;
+            }
+            else if (Input.IsKeyDown(Down) && Actor.LocalPosition.y < Game.Resolution.y - 1)
+            {
+                MoveDown(deltaTime * speed*Acseleration);
+                Acseleration ++;
+            }
+            else Acseleration = 1;
         }
 
         public override void OnDestroy()
         {
-            if (Parent.Name == this.GetType().Name)
-                Parent.Name = "empty";
+            if (Actor.Name == this.GetType().Name)
+                Actor.Name = "empty";
         }
         public override void OnCollide(Actor Exciter)
-        {
-            Console.Beep();
-        }
+        { }
+
         public void MoveUp(float distance)
         {
-            Parent.Position = (Parent.Position.Move(0,-distance,0));
+            Actor.LocalPosition = (Actor.LocalPosition.Move(0, -distance, 0));
         }
         public void MoveDown(float distance)
         {
-            Parent.Position = Parent.Position.Move(0,distance,0);
+            Actor.LocalPosition = Actor.LocalPosition.Move(0, distance, 0);
         }
         public void SetControlsUp(ConsoleKey key)
         {

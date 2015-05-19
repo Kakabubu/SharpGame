@@ -23,6 +23,8 @@ namespace GameFramework
 
         public virtual void Draw(float deltaTime) { }
 
+        public virtual void OnCollide(Actor Exciter) { }
+
         public virtual void OnDestroy() { }
     }
 }

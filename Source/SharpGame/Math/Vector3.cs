@@ -11,7 +11,9 @@ namespace GameFramework
         #region Predefined Vectors
         public static readonly Vector3 Zero = new Vector3(0, 0, 0);
         public static readonly Vector3 Up = new Vector3(0, -1f, 0);
-        public static readonly Vector3 Right = new Vector3(1, 0, 0);
+        public static readonly Vector3 Right = new Vector3(1f, 0, 0);
+        public static readonly Vector3 Left = new Vector3(-1f, 0, 0);
+        public static readonly Vector3 Down = new Vector3(0, 1f, 0);
         #endregion
 
         public float x;
@@ -132,5 +134,30 @@ namespace GameFramework
             // TODO: provide efficient hashing algorithm instead of relying on strings
             return string.Format("{0}{1}{2}", x, y, z).GetHashCode();
         }
+
+        #region added by kakabubu
+        public bool IsInBounds(Resolution Resolution)
+        {
+            return this.x > 0 && this.y > 5 &&
+                   this.x < Resolution.x - 1 &&
+                   this.y < Resolution.y - 1;
+        }
+
+        public Vector3 Move(float x, float y, float z)
+        {
+            return new Vector3(this.x + x, this.y + y, this.z + z);
+        }
+        public Vector3 Move(Vector3 that)
+        {
+            return new Vector3(this.x + that.x, this.y + that.y, this.z + that.z);
+        }
+        public Vector3 Move(double facing, double distance)
+        {
+            facing = ((facing - 90) * Math.PI / 180F);
+            return new Vector3(x + (float)(distance * Math.Cos(facing)),
+                               y + (float)(distance * Math.Sin(facing)),
+                               z);
+        }
+        #endregion
     }
 }

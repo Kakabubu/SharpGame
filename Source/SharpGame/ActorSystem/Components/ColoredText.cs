@@ -8,7 +8,7 @@ namespace GameFramework
 {
     public class ColoredText : ActorComponent
     {
-        public char[,] Text { get; set; }
+       /* public char[,] Text { get; set; }
 
         public ConsoleColor BackgroundColor { get; set; }
         public ConsoleColor ForegroundColor { get; set; }
@@ -33,6 +33,6 @@ namespace GameFramework
                         new GraphicPrimitive(Text[y, x], ForegroundColor, BackgroundColor, actorPosition.z));
                 }
             }
-        }
+        }*/
     }
 }

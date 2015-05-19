@@ -21,14 +21,14 @@ namespace GameFramework
         }
         public override void Start()
         {
-            Parent.Name = this.GetType().Name;
+            Actor.Name = this.GetType().Name;
             RandomPieceSet();placeOnStart();
         }
         public override void Update(float deltaTime)
         {
-            if (Input.IsKeyDown(Left) && Parent.Position.x > 0)
+            if (Input.IsKeyDown(Left) && Actor.WorldPosition.x > 0)
                 MoveLeft(deltaTime * speed);
-            if (Input.IsKeyDown(Right) && Parent.Position.y < Game.Resolution.y - 1)
+            if (Input.IsKeyDown(Right) && Actor.WorldPosition.y < Game.Resolution.y - 1)
                 MoveRight(deltaTime * speed);
             if (Input.IsKeyDown(Turn))
                 TurnPiece(speed*deltaTime);
@@ -89,19 +89,19 @@ namespace GameFramework
         }
         public void placeOnStart ()
         {
-            Parent.Position = new Vector3(6, 0, 0);
+            Actor.WorldPosition = new Vector3(6, 0, 0);
         }
         public void MoveLeft(float L)
         {
-            Parent.Position = Parent.Position.Move(0, -L, 0);
+            Actor.WorldPosition = Actor.WorldPosition.Move(0, -L, 0);
         }
         public void MoveRight(float L)
         {
-            Parent.Position = Parent.Position.Move(0, L, 0);
+            Actor.WorldPosition = Actor.WorldPosition.Move(0, L, 0);
         }
         public void MoveDown(float L)
         {
-            Parent.Position = Parent.Position.Move(L, 0, 0);
+            Actor.WorldPosition = Actor.WorldPosition.Move(L, 0, 0);
         }
         public void TurnPiece(float L)
         {

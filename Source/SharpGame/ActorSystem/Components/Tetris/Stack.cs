@@ -17,7 +17,7 @@ namespace GameFramework
         }
         public override void Start()
         {
-            Parent.Name = this.GetType().Name;
+            Actor.Name = this.GetType().Name;
         }
         public override void Update(float deltaTime)
         { }

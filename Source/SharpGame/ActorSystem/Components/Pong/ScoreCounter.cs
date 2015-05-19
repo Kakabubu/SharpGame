@@ -15,22 +15,20 @@ namespace GameFramework
         {
             if (IsLeft)
             {
-                Parent.Name = "ScoreCounterLeft";
-                Parent.Position = new Vector3(0,0,0);
+                Actor.Name = "ScoreCounterLeft";  
             }
             else
             {
-                Parent.Name = "ScoreCounterRight";
-                Parent.Position = new Vector3(0, 0, 0);
+                Actor.Name = "ScoreCounterRight";
             }
+            Actor.WorldPosition = new Vector3(0, 0, 0);
         }
         public override void Update(float deltaTime)
         {
-            char [] arr=Score.ToString().ToCharArray();
+            char [] arr=Score.ToString().ToCharArray();///omg I'm idiot
             foreach (char ch in arr)
                 if (IsLeft)
                 {
-                    Score.ToString().ToCharArray();//change this shit !
                     Game.Graphics.PointChange(Game.Resolution.x / 2 + 1, 0,
                         new GraphicsPrimitive(ch, 1, ConsoleColor.Black));
                 }

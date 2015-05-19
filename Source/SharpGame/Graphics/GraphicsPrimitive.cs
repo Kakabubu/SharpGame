@@ -1,23 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameFramework
 {
-    struct GraphicsPrimitive
+    public struct GraphicsPrimitive
     {
-        private char Symbol {get;set;}
-        int Deep {get;set;}
-        ConsoleColor Color;
-        public bool Compare (GraphicsPrimitive that)
+        char Symbol;
+        public int Deep;
+        private ConsoleColor Color;
+        public GraphicsPrimitive(char S, int D, ConsoleColor C)
+            : this()
         {
-            if (this.Symbol==that.Symbol&&
-                this.Deep==that.Deep&&
-                this.Color==that.Color)
+            this.Symbol = S;
+            this.Deep = D;
+            this.Color = C;
+        }
+
+        public bool Compare(GraphicsPrimitive that)
+        {
+            if (this.Symbol == that.Symbol &&
+                this.Deep == that.Deep &&
+                this.Color == that.Color)
                 return true;
             return false;
         }
+        public void PrintTo(int X, int Y)
+        {
+            Console.ForegroundColor = this.Color;
+            Console.SetCursorPosition(X, Y);
+            Console.Write(Symbol);
+        }
+        public void InBounds()
+        {
+
+        }
+        public static readonly GraphicsPrimitive Empty = new GraphicsPrimitive(' ', 0, ConsoleColor.Black);
     }
 }

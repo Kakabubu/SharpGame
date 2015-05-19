@@ -22,7 +22,7 @@ namespace GameFramework.Internal
             base.AddChild(component);
         }
 
-        public WeakReference<TComponent> GetComponent<TComponent>() where TComponent : class
+        public WeakReference<TComponent> Get<TComponent>() where TComponent : class
         {
             for (int i = 0; i < children.Count; i++)
             {
@@ -33,7 +33,7 @@ namespace GameFramework.Internal
             return new WeakReference<TComponent>(null);
         }
 
-        public List<WeakReference<TComponent>> GetAllComponents<TComponent>() where TComponent : class
+        public List<WeakReference<TComponent>> GetAll<TComponent>() where TComponent : class
         {
             List<WeakReference<TComponent>> foundComponents = new List<WeakReference<TComponent>>();
 
@@ -45,5 +45,6 @@ namespace GameFramework.Internal
 
             return foundComponents;
         }
+
     }
 }

@@ -25,13 +25,13 @@ namespace GameFramework
         }
         public override void Start()
         {
-            Parent.Name = this.GetType().Name;
+            Actor.Name = this.GetType().Name;
             Centralize();    
         }
         public override void Update(float deltaTime)
         {
             MoveForward(deltaTime);
-            PrintFacing(Game.Resolution.x / 2, Game.Resolution.y + 2);//just for debuging
+            PrintFacing(Game.Resolution.x / 2, Game.Resolution.y + 1);//just for debuging
         }
         public override void OnDestroy()
         { }
@@ -39,7 +39,7 @@ namespace GameFramework
 
         public void MoveForward(float deltaTime)
         {
-            Parent.Position = Parent.Position.Move(facing, speed*deltaTime);
+            Actor.LocalPosition = Actor.LocalPosition.Move(facing, speed*deltaTime);
         }
         public override void OnCollide(Actor Exciter)
         {
@@ -47,11 +47,11 @@ namespace GameFramework
             {
                 case "Racket":
                     
-                    if (Exciter.Position.x > Game.Resolution.x/2)
+                    if (Exciter.LocalPosition.x > Game.Resolution.x/2)
                     {
-                        facing =facing+ 180 - (2 * ((Math.Asin((Parent.Position.y - Exciter.Position.y) / 4f)) / (Math.PI / 180F)) /*- facing % 90*/);
+                        facing = facing + 180 - (2 * ((Math.Asin((Actor.LocalPosition.y - Exciter.LocalPosition.y) / 4f)) / (Math.PI / 180F)) /*- facing % 90*/);
                     }
-                    else facing = facing - 180 + (2 * ((Math.Asin((Parent.Position.y - Exciter.Position.y) / 4f)) / (Math.PI / 180F)) /*- facing % 90*/);
+                    else facing = facing - 180 + (2 * ((Math.Asin((Actor.LocalPosition.y - Exciter.LocalPosition.y) / 4f)) / (Math.PI / 180F)) /*- facing % 90*/);
                     break;
 
                 #region score
@@ -63,7 +63,7 @@ namespace GameFramework
                     break;
                 #endregion
 
-                case "Field":
+                case "GameInterface":
                     if (facing % 90 != 0)
                     {
                         if (((facing - facing % 90) / 90) % 2 == 0)
@@ -75,12 +75,11 @@ namespace GameFramework
 
                 default:   
                     break;
-
             }
         }
         public void Centralize ()
         {
-            Parent.Position = new Vector3((Game.Resolution.x - 1) / 2+0.5f, (Game.Resolution.y - 1) / 2, 0);
+            Actor.LocalPosition = new Vector3((Game.Resolution.x - 1) / 2 + 0.5f, (Game.Resolution.y - 1) / 2, 0);
             facing = 45;
         }
         public void PrintFacing(int x, int y)

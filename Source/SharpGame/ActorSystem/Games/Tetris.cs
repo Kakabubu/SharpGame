@@ -16,20 +16,20 @@ namespace GameFramework
         public Tetris()
         {
             figure = new Actor();
-            figure.AddEntity(new Piece());
-            figure.AddEntity(new ASCIIPainter());
-            figure.AddEntity(new Collider());
+            figure.AddComponent(new Piece());
+            figure.AddComponent(new ASCIIPainter());
+            figure.AddComponent(new Collider());
 
             stack = new Actor();
-            stack.AddEntity(new Stack());
-            figure.AddEntity(new ASCIIPainter());
-            figure.AddEntity(new Collider());
+            stack.AddComponent(new Stack());
+            figure.AddComponent(new ASCIIPainter());
+            figure.AddComponent(new Collider());
 
             StackSize = new Resolution();
             field = new Actor();
-            figure.AddEntity(new GameInterface());
-            figure.AddEntity(new ASCIIPainter());
-            figure.AddEntity(new Collider());
+            figure.AddComponent(new GameInterface());
+            figure.AddComponent(new ASCIIPainter());
+            figure.AddComponent(new Collider());
 
             score = new Actor();
             /**/

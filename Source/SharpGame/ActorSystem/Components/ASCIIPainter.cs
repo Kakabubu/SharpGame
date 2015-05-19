@@ -26,7 +26,7 @@ namespace GameFramework
         }
         public void Initialize()
         {
-            switch (Parent.Name)
+            switch (Actor.Name)
             {
                 case "Racket":
                     {
@@ -79,15 +79,15 @@ namespace GameFramework
         }
         public void ActorToBuffer()
         {
-            int y = (int)Parent.Position.y - (Map.GetLength(0) / 2);
+            int y = (int)Actor.LocalPosition.y - (Map.GetLength(0) / 2);
             for (int i = 0; i < Map.GetLength(0); y++, i++)
             {
-                int x = (int)Parent.Position.x - (Map.GetLength(1) / 2);
+                int x = (int)Actor.LocalPosition.x - (Map.GetLength(1) / 2);
                 for (int j = 0; j < Map.GetLength(1); x++, j++)
                 {
                     if (IsInBounds(x, y))
                     {
-                        Game.Graphics.PointChange(x, y, new GraphicsPrimitive(Map[i, j], (int)Parent.Position.z, Color[i, j]));
+                        Game.Graphics.PointChange(x, y, new GraphicsPrimitive(Map[i, j], (int)Actor.LocalPosition.z, Color[i, j]));
                     }
                 }
             }      

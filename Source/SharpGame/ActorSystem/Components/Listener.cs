@@ -20,17 +20,17 @@ namespace GameFramework
         {
             if (Input.IsKeyDown(ConsoleKey.D1))
             {
-                Parent.Parent.OnDestroy();
+                Actor.Scene.OnDestroy();
                 Pong pong = new Pong(); 
             }
             if (Input.IsKeyDown(ConsoleKey.D2))
             {
-                Parent.Parent.OnDestroy();
+                Actor.Scene.OnDestroy();
                 Tetris tetris = new Tetris(); 
             }
             if (Input.IsKeyDown(ConsoleKey.Escape))
             {
-                Parent.Parent.OnDestroy();
+                Actor.Scene.OnDestroy();
             }
         }   
     }
