@@ -8,33 +8,41 @@ namespace GameFramework
 {
     class Program
     {
-        struct TestStruct
-        {
-            int intField;
-            bool boolField;
-            string stringField;
-
-            public TestStruct(int i, bool b, string s) : this()
-            {
-                intField = i;
-                boolField = b;
-                stringField = s;
-            }
-        }
-
         static void Main(string[] args)
         {
-            Racket comp = new Racket();
-            Console.WriteLine(export(comp));
             // Pong pong = new Pong();
+            var rack = new Racket();
+            var ball = new Ball();
+            rack.SetControlsDown(ConsoleKey.S);
+            List<object>ForExport=new List<object>();
+            ForExport.Add(rack); ForExport.Add(ball);
+
+            export(ForExport);
         }
-        public static string export(object obj)
+        public static void export(object obj)
         {
-            StringBuilder JsonOut=new StringBuilder ("{");
-            foreach (var inf in obj.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public))
-                JsonOut.AppendFormat(" {0}:{1} ", inf.Name, inf.GetValue(obj));
-            JsonOut.Append("}");
-            return JsonOut.ToString();
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter
+                  (@"D:\Anton\Education\Unity 3D C#\Repos\ShrpGm\Source\JSON.txt"))
+            {
+                file.Write("{");
+                foreach (var inf in obj.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public))
+                    file.Write(" {0}:{1} ", inf.Name, inf.GetValue(obj));
+                file.WriteLine("}");
+            }
+        }
+        public static void export(List <object> lotsOf)
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter
+                  (@"D:\Anton\Education\Unity 3D C#\Repos\ShrpGm\Source\JSON.txt"))
+            {
+                foreach (object obj in lotsOf)
+                {
+                    file.Write("{");
+                    foreach (var inf in obj.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public))
+                        file.Write(" {0}:{1} ", inf.Name, inf.GetValue(obj));
+                    file.WriteLine("}");
+                }
+            }
         }
     }
 }
