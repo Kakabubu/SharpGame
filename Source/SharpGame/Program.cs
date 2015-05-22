@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.IO;
+using GameFramework.Internal;
 
 namespace GameFramework
 {
@@ -11,8 +12,8 @@ namespace GameFramework
     {
         static void Main(string[] args)
         {
-            // Pong pong = new Pong();
-            string path;
+            Pong pong = new Pong();
+            string path="";
             Racket ra = GiveMe<Racket>(path);
             var rack = new Racket();
             var ball = new Ball();
@@ -21,20 +22,15 @@ namespace GameFramework
             ForExport.Add(rack); ForExport.Add(ball);
 
             toJson(ForExport);
+            //new Morse().PrintRoman("-... ... --- ...  --- ... ---           --- ... ---");
         }
-        private static TObject GiveMe<TObject>(string path)
-        {
-            string txt = File.ReadAllText(path);
-            foreach (var inf in typeof(TObject).GetFields())
-            {
-                int n1=txt.IndexOf(inf.Name);
-                int n2=txt.IndexOf('\"', n1);
-                int n3=txt.IndexOf('\"', n2);
-                int delta = n3 - n2;
 
-            }
-            return ;
+        public static TObject GiveMe<TObject>(string path) where TObject: class, new()
+        {
+            TObject obj = new TObject();
+            return obj;
         }
+
         public static void toJson (object obj)
         {
             File.WriteAllText(PathGenerate(obj), ToJsonString(obj));
@@ -60,7 +56,5 @@ namespace GameFramework
             Path.AppendFormat("{0}{1}", obj.GetType().Name.ToString(), ".txt");
             return Path.ToString();
         }
-        
- 
     }
 }
