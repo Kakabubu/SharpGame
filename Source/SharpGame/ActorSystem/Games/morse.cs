@@ -57,7 +57,7 @@ namespace GameFramework
                 start = end + 1;
             }
             Text.Append(SymbolFind(Code.Substring(start)));
-            return System.Text.RegularExpressions.Regex.Replace(Text.ToString(), " +", " "); ;
+            return System.Text.RegularExpressions.Regex.Replace(Text.ToString(), " +", " "); 
         }
         private string SymbolFind(string str)
         {
@@ -66,7 +66,7 @@ namespace GameFramework
                     return roman.Substring(i, 1);
             return "#";
         }
-        public void PrintRoman(string str)
+        public void PrintLatin(string str)
         {
             Console.WriteLine(DecodeMorse(str));
         }

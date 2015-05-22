@@ -1,0 +1,65 @@
+{
+  "__actors": [
+		{
+		  "Name": "ActorA",
+		  "LocalPosition": {
+		    "x": 2.0,
+		    "y": 5.0,
+		    "z": 0.0
+		  },
+		  "__components": [
+				{
+				  "__type": "SharpGame.ColoredText, SharpGame",
+				  "Text": [
+					  [ "#", "#", "#" ],
+					  [ "#", "A", "#" ],
+					  [ "#", "#", "#" ]
+				  ],
+				  "BackgroundColor": "DarkGray",
+				  "ForegroundColor": "Cyan"
+				},
+				{
+				  "__type": "SharpGame.TestComponentB, SharpGame",
+				  "Direction": {
+				    "x": 0.707106769,
+				    "y": 0.707106769,
+				    "z": 0.0
+				  },
+				  "Speed": 1.0
+				}
+		  ],
+		  "__children": [
+				{
+				  "Name": "ActorB",
+				  "LocalPosition": {
+				    "x": 4.0,
+				    "y": 0.0,
+				    "z": 0.0
+				  },
+				  "__components": [
+						{
+						  "__type": "SharpGame.ColoredText, SharpGame",
+						  "Text": [
+							  [ "#", "#", "#" ],
+							  [ "#", "B", "#" ],
+							  [ "#", "#", "#" ]
+						  ],
+						  "BackgroundColor": "Cyan",
+						  "ForegroundColor": "DarkGray"
+						},
+						{
+						  "__type": "SharpGame.TestComponentB, SharpGame",
+						  "Direction": {
+						    "x": 0.707106769,
+						    "y": 0.707106769,
+						    "z": 0.0
+						  },
+						  "Speed": 1.0
+						}
+				  ],
+				  "__children": []
+				}
+		  ]
+		}
+  ]
+}
