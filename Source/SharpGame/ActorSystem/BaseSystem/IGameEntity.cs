@@ -1,4 +1,4 @@
-﻿namespace GameFramework.Internal
+﻿namespace SharpGame.Internal
 {
     public interface IGameEntity
     {

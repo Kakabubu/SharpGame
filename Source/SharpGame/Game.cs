@@ -2,27 +2,25 @@
 using System.Diagnostics;
 using System.Threading;
 
-namespace GameFramework
+namespace SharpGame
 {
     public class Game
     {
         public int TargetFPS { get; set; }
 
-        public Resolution Resolution;
-        public Graphics Graphics;
-        public Physics Physics;
-        public string Name;
+        #region Subsystems
+        public Graphics Graphics { get; private set; }
+        public Resources Resources { get; private set; }
+        #endregion
 
         private bool initialized;
         private bool runing;
         private bool exitQueued;
 
-        public bool Initialize(string name)
+        public bool Initialize()
         {
-            Name = name;
-            Resolution = new Resolution(40,25);
-            Graphics = new Graphics(Resolution);
-            Physics = new Physics(Resolution);
+            Graphics = new Graphics();
+            Resources = new Resources();
 
             initialized = true;
             return true;
@@ -45,12 +43,12 @@ namespace GameFramework
                 float delta = time.ElapsedMilliseconds / 1000f;
                 time.Restart();
 
-                Physics.BufferClear();
-                Graphics.BufferClear();
+                Graphics.ClearBuffer();
                 scene.Update(delta);
                 scene.Draw(delta);
-                Graphics.DrawFrame();
-                //Graphics.SwapBuffers();
+                Graphics.DrawOnScreen();
+                Graphics.SwapBuffers();
+
                 SleepToMatchFramerate(TargetFPS, time.ElapsedMilliseconds / 1000f);
             }
 

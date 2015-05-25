@@ -1,42 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameFramework.Internal;
+using SharpGame.Internal;
 
-namespace GameFramework
+namespace SharpGame
 {
-    public class Scene : GameEntityContainer<Actor>
+    public class Scene : IGameEntity
     {
         public Game Game { get; set; }
 
-        public override void AddChild(Actor actor)
-        {
-            actor.Scene = this;
+        private Actor rootActor;
 
-            base.AddChild(actor);
+        public Scene()
+        {
+            rootActor = new Actor("Root");
+            rootActor.Scene = this;
         }
 
-        public WeakReference<Actor> GetActor(string name)
+        #region Actors
+        public void AddActor(Actor actor)
         {
-            for (int i = 0; i < children.Count; i++)
-            {
-                if (children[i].Name == name)
-                    return new WeakReference<Actor>(children[i]);
-            }
-
-            return new WeakReference<Actor>(null);
+            rootActor.AddChild(actor);
         }
 
-        public List<WeakReference<Actor>> GetAllActors(string name)
+        public Actor FindActor(Predicate<Actor> predicate)
         {
-            var foundActors = new List<WeakReference<Actor>>();
-
-            for (int i = 0; i < children.Count; i++)
-            {
-                if (children[i].Name == name)
-                    foundActors.Add(new WeakReference<Actor>(children[i]));
-            }
-
-            return foundActors;
+            return rootActor.FindChild(predicate);
         }
+
+        public List<Actor> FindAllActors(Predicate<Actor> predicate)
+        {
+            return rootActor.FindAllChildren(predicate);
+        }
+        #endregion
+
+        #region IGameEntity implementation
+        public void Awake()
+        {
+            rootActor.Awake();
+        }
+
+        public void Start()
+        {
+            rootActor.Start();
+        }
+
+        public void Update(float deltaTime)
+        {
+            rootActor.Update(deltaTime);
+        }
+
+        public void Draw(float deltaTime)
+        {
+            rootActor.Draw(deltaTime);
+        }
+
+        public void OnDestroy()
+        {
+            rootActor.OnDestroy();
+            rootActor = null;
+        }
+        #endregion
     }
 }

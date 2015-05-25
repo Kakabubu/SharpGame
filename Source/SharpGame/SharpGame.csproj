@@ -7,10 +7,25 @@
     <ProjectGuid>{F9679A5E-2CE9-4E10-8442-902775C89181}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameFramework</RootNamespace>
-    <AssemblyName>GameFramework</AssemblyName>
+    <RootNamespace>SharpGame</RootNamespace>
+    <AssemblyName>SharpGame</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,48 +59,43 @@
     <Compile Include="ActorSystem\Actor.cs" />
     <Compile Include="ActorSystem\ActorComponent.cs" />
     <Compile Include="ActorSystem\BaseSystem\ComponentContainer.cs" />
-    <Compile Include="ActorSystem\Components\ASCIIPainter.cs" />
-    <Compile Include="ActorSystem\Components\Collider.cs" />
     <Compile Include="ActorSystem\Components\ColoredText.cs" />
-    <Compile Include="ActorSystem\Components\GameInterface.cs" />
-    <Compile Include="ActorSystem\Games\Pong.cs" />
-    <Compile Include="ActorSystem\Games\Tetris.cs" />
-    <Compile Include="ActorSystem\Components\Listener.cs" />
-    <Compile Include="ActorSystem\Components\Pong\Ball.cs" />
-    <Compile Include="ActorSystem\Components\Pong\Racket.cs" />
-    <Compile Include="ActorSystem\Components\Pong\ScoreCounter.cs" />
     <Compile Include="ActorSystem\Components\TestComponentA.cs" />
     <Compile Include="ActorSystem\Components\TestComponentB.cs" />
     <Compile Include="ActorSystem\BaseSystem\GameEntityContainer.cs" />
     <Compile Include="ActorSystem\BaseSystem\IGameEntity.cs" />
-    <Compile Include="ActorSystem\Components\Tetris\Piece.cs" />
-    <Compile Include="ActorSystem\Components\Tetris\Stack.cs" />
-    <Compile Include="ActorSystem\Physics\Physics.cs" />
+    <Compile Include="Graphics\GraphicPrimitive.cs" />
     <Compile Include="Graphics\Graphics.cs" />
-    <Compile Include="Graphics\GraphicsPrimitive.cs" />
-    <Compile Include="Graphics\Resolution.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Math\Vector3.cs" />
-    <Compile Include="ActorSystem\Games\morse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ActorSystem\Scene.cs" />
+    <Compile Include="ResourceManagement\Loaders\ILoader.cs" />
+    <Compile Include="ResourceManagement\Loaders\SceneLoader.cs" />
+    <Compile Include="ResourceManagement\Resources.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include=".scene\new test.scene">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include=".scene\test.scene">
+    <None Include="test.scene">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Newtonsoft.Json-master\Src\Newtonsoft.Json\Newtonsoft.Json.csproj">
+    <ProjectReference Include="..\NewtonsoftJson\Src\Newtonsoft.Json\Newtonsoft.Json.csproj">
       <Project>{eeea67f9-9089-481d-a4dc-0966dec9fd7d}</Project>
       <Name>Newtonsoft.Json</Name>
     </ProjectReference>

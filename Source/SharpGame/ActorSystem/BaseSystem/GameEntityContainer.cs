@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace GameFramework.Internal
+namespace SharpGame.Internal
 {
     public abstract class GameEntityContainer<TGameEntity> : IGameEntity 
         where TGameEntity : IGameEntity

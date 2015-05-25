@@ -1,0 +1,3 @@
+[submodule "Source/NewtonsoftJson"]
+	path = Source/NewtonsoftJson
+	url = git@github.com:shironecko/Newtonsoft.Json.git

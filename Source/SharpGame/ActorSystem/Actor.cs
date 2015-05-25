@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameFramework.Internal;
+using SharpGame.Internal;
 
-namespace GameFramework
+namespace SharpGame
 {
     public class Actor : GameEntityContainer<Actor>
     {
@@ -52,14 +52,15 @@ namespace GameFramework
 
         public Vector3 LocalPosition { get; set; }
 
-        private ComponentContainer Components;
+        private ComponentContainer componentContainer;
 
         public Actor(string name = "Actor")
         {
             this.Name = name;
-            Components = new ComponentContainer(this);
+            componentContainer = new ComponentContainer(this);
         }
 
+        #region Children
         public override void AddChild(Actor actor)
         {
             actor.Parent = this;
@@ -68,60 +69,101 @@ namespace GameFramework
             base.AddChild(actor);
         }
 
-        public List<Actor> GetAllChildren()
+        public Actor FindChild(Predicate<Actor> predicate)
         {
-            return new List<Actor>(children);
+            Actor foundActor;
+            for (int i = 0; i < children.Count; i++)
+            {
+                foundActor = children[i].FindChildRecursive(predicate);
+
+                if (foundActor != null)
+                    return foundActor;
+            }
+
+            return null;
         }
 
+        private Actor FindChildRecursive(Predicate<Actor> predicate)
+        {
+            if (predicate(this))
+                return this;
+            else
+            {
+                for (int i = 0; i < children.Count; i++)
+                {
+                    Actor foundActor = children[i].FindChildRecursive(predicate);
+
+                    if (foundActor != null)
+                        return foundActor;
+                }
+
+                return null;
+            }
+        }
+
+        public List<Actor> FindAllChildren(Predicate<Actor> predicate)
+        {
+            var foundActors = new List<Actor>();
+            children.ForEach(child => child.FindAllChildrenRecursive(predicate, foundActors));
+
+            return foundActors;
+        }
+
+        private void FindAllChildrenRecursive(Predicate<Actor> predicate, List<Actor> outList)
+        {
+            if (predicate(this))
+                outList.Add(this);
+            
+            children.ForEach(child => child.FindAllChildrenRecursive(predicate, outList));
+        }
+        #endregion
+
+        #region Components
+        public void AddComponent(ActorComponent component)
+        {
+            componentContainer.AddChild(component);
+        }
+
+        public TComponent GetComponent<TComponent>() where TComponent : class
+        {
+            return componentContainer.GetComponent<TComponent>();
+        }
+
+        public List<TComponent> GetAllComponents<TComponent>() where TComponent : class
+        {
+            return componentContainer.GetAllComponents<TComponent>();
+        }
+        #endregion
+
+        #region IGameEntity implementation
         public override void Start()
         {
-            Components.Start();
+            componentContainer.Start();
 
             base.Start();
         }
 
         public override void Update(float deltaTime)
         {
-            Components.Update(deltaTime);
+            componentContainer.Update(deltaTime);
 
             base.Update(deltaTime);
         }
 
         public override void Draw(float deltaTime)
         {
-            Components.Draw(deltaTime);
+            componentContainer.Draw(deltaTime);
 
             base.Draw(deltaTime);
         }
 
         public override void OnDestroy()
         {
-            Components.OnDestroy();
-            Components = null;
+            componentContainer.OnDestroy();
+            componentContainer = null;
 
             base.OnDestroy();
         }
-
-        public void AddComponent(ActorComponent component)
-        {
-            Components.AddChild(component);
-        }
-
-        public WeakReference<TComponent> GetComponent<TComponent>() where TComponent : class
-        {
-            return Components.Get<TComponent>();
-        }
-
-        public List<WeakReference<TComponent>> GetAllComponents<TComponent>() where TComponent : class
-        {
-            return Components.GetAll<TComponent>();
-        }
-        public void OnColide(Actor Exciter)
-        {
-            this.Components.OnCollide(Exciter);
-            foreach (Actor Child in this.children)
-                Child.Components.OnCollide(Exciter);
-        }
-
+        #endregion
     }
 }

@@ -1,6 +1,6 @@
-﻿using GameFramework.Internal;
+﻿using SharpGame.Internal;
 
-namespace GameFramework
+namespace SharpGame
 {
     public abstract class ActorComponent : IGameEntity
     {
