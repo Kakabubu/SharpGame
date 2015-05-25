@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace GameFramework
+namespace SharpGame
 {
     public class ASCIIPainter : ActorComponent
     {

@@ -1,4 +1,5 @@
-﻿namespace GameFramework
+﻿using System;
+namespace SharpGame
 {
     public struct Resolution
     {

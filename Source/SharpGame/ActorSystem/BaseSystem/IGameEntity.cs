@@ -1,4 +1,5 @@
-﻿namespace SharpGame.Internal
+﻿
+namespace SharpGame.Internal
 {
     public interface IGameEntity
     {
@@ -8,10 +9,8 @@
 
         void Update(float deltaTime);
 
-		void Draw (float deltaTime);
+        void Draw(float deltaTime);
 
         void OnDestroy();
-
-        void OnCollide(Actor Exciter);
     }
 }

@@ -6,6 +6,7 @@ namespace SharpGame
     {
         static void Main(string[] args)
         {
+        //    Pong Pong = new Pong();
             TestActorsSearching();
 
             Resources res = new Resources();
@@ -14,7 +15,7 @@ namespace SharpGame
 
             Game game = new Game();
             game.TargetFPS = 60;
-            game.Initialize();
+            game.Initialize("some");
             game.Run(testScene);
         }
 

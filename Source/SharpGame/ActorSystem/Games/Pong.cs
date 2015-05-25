@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameFramework
+namespace SharpGame
 {
     public class Pong
     {
@@ -75,12 +75,12 @@ namespace GameFramework
 
         private void AddAllToScene()
         {
-            scene.AddChild(LeftPlayer);
-            scene.AddChild(RightPlayer);
-            scene.AddChild(ball);
-            scene.AddChild(field);
-            scene.AddChild(LeftCounter);
-            scene.AddChild(RightCounter);
+            scene.AddActor(LeftPlayer);
+            scene.AddActor(RightPlayer);
+            scene.AddActor(ball);
+            scene.AddActor(field);
+            scene.AddActor(LeftCounter);
+            scene.AddActor(RightCounter);
         }
     }
 }

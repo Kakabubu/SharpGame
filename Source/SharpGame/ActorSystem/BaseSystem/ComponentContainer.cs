@@ -45,5 +45,10 @@ namespace SharpGame.Internal
 
             return foundComponents;
         }
+        public void OnCollide (Actor Exciter)
+        {
+            foreach (ActorComponent cmp in children)
+                cmp.OnCollide(Exciter);
+        }
     }
 }

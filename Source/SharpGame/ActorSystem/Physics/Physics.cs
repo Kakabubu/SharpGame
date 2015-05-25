@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GameFramework
+namespace SharpGame
 {
     public class Physics
     {
@@ -38,7 +38,7 @@ namespace GameFramework
                     foreach (Actor Each in Map[x,y])
                         foreach (Actor that in Map[x, y])
                             if (that!=Each)
-                                Each.OnColide(that);
+                                Each.OnCollide(that);
             }
         }
         public void BufferClear()

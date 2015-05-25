@@ -16,6 +16,7 @@ namespace SharpGame
             rootActor.Scene = this;
         }
 
+
         #region Actors
         public void AddActor(Actor actor)
         {

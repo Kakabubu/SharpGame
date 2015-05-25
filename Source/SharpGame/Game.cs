@@ -7,8 +7,10 @@ namespace SharpGame
     public class Game
     {
         public int TargetFPS { get; set; }
-
+        public Resolution Resolution {get; private set;}
+        public string Name { get; private set; }
         #region Subsystems
+        public Physics Physics { get; private set; }
         public Graphics Graphics { get; private set; }
         public Resources Resources { get; private set; }
         #endregion
@@ -17,9 +19,12 @@ namespace SharpGame
         private bool runing;
         private bool exitQueued;
 
-        public bool Initialize()
+        public bool Initialize(string Nm)
         {
-            Graphics = new Graphics();
+            Name = Nm;
+            Resolution = new Resolution(40,30);
+            Physics = new Physics(Resolution);
+            Graphics = new Graphics(Resolution);
             Resources = new Resources();
 
             initialized = true;
@@ -43,11 +48,12 @@ namespace SharpGame
                 float delta = time.ElapsedMilliseconds / 1000f;
                 time.Restart();
 
-                Graphics.ClearBuffer();
+                Graphics.BufferClear();
                 scene.Update(delta);
+                Physics.BufferClear();
                 scene.Draw(delta);
-                Graphics.DrawOnScreen();
-                Graphics.SwapBuffers();
+                Graphics.DrawFrame();
+                //Graphics.SwapBuffers();
 
                 SleepToMatchFramerate(TargetFPS, time.ElapsedMilliseconds / 1000f);
             }

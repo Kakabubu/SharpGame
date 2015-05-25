@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace SharpGame.Internal
 {
-    public abstract class GameEntityContainer<TGameEntity> : IGameEntity 
+    public abstract class GameEntityContainer<TGameEntity> : IGameEntity
         where TGameEntity : IGameEntity
     {
         protected List<TGameEntity> children;
@@ -47,13 +47,13 @@ namespace SharpGame.Internal
             }
         }
 
-		public virtual void Draw(float deltaTime)
-		{
-			for (int i = 0; i < children.Count; i++)
-			{
-				children[i].Draw(deltaTime);
-			}
-		}
+        public virtual void Draw(float deltaTime)
+        {
+            for (int i = 0; i < children.Count; i++)
+            {
+                children[i].Draw(deltaTime);
+            }
+        }
 
         public virtual void OnDestroy()
         {
@@ -61,15 +61,7 @@ namespace SharpGame.Internal
             {
                 children[i].OnDestroy();
             }
-
             children.Clear();
-        }
-        public virtual void OnCollide(Actor Exciter)
-        {
-            for (int i = 0; i < children.Count; i++)
-            {
-                children[i].OnCollide(Exciter);
-            }
         }
     }
 }

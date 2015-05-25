@@ -165,5 +165,11 @@ namespace SharpGame
             base.OnDestroy();
         }
         #endregion
+        public void OnCollide (Actor Exciter)
+        {
+            componentContainer.OnCollide(Exciter);
+            foreach (Actor act in children)
+                act.OnCollide(Exciter);
+        }
     }
 }

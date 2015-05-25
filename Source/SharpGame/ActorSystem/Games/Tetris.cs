@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameFramework
+namespace SharpGame
 {
     class Tetris
     {
@@ -25,7 +25,7 @@ namespace GameFramework
             figure.AddComponent(new ASCIIPainter());
             figure.AddComponent(new Collider());
 
-            StackSize = new Resolution();
+            StackSize = new Resolution(10,30);
             field = new Actor();
             figure.AddComponent(new GameInterface());
             figure.AddComponent(new ASCIIPainter());

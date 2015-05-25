@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GameFramework
+namespace SharpGame
 {
     class Racket : ActorComponent
     {
