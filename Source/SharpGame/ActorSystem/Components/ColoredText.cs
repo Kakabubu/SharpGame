@@ -8,7 +8,7 @@ namespace SharpGame
 {
     public class ColoredText : ActorComponent
     {
-       /* public char[,] Text { get; set; }
+        public char[,] Text { get; set; }
 
         public ConsoleColor BackgroundColor { get; set; }
         public ConsoleColor ForegroundColor { get; set; }
@@ -29,10 +29,17 @@ namespace SharpGame
             {
                 for (int x = 0; x < width; x++)
                 {
-                    Game.Graphics.DrawPrimitive(startX + x, startY + y,
-                        new GraphicPrimitive(Text[y, x], ForegroundColor, BackgroundColor, actorPosition.z));
+                    if (IsInBounds(startY + y, startX + x))
+                    {
+                        Game.Graphics.PointChange(startX + x, startY + y,
+                            new GraphicsPrimitive(Text[y, x], (int)actorPosition.z, ForegroundColor));
+                    }
                 }
             }
-        }*/
+        }
+        public bool IsInBounds(int x, int y)
+        {
+            return x >= 0 && y >= 0 && x < Game.Resolution.x && y < Game.Resolution.y;
+        }
     }
 }
