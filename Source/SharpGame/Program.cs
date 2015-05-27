@@ -1,4 +1,11 @@
-﻿using System.Diagnostics;
+﻿//using System.Windows; for using wpf
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Text;
+using System.IO;
+using SharpGame.Internal;
+using System.Diagnostics;
 
 namespace SharpGame
 {
@@ -6,9 +13,11 @@ namespace SharpGame
     {
         static void Main(string[] args)
         {
-        //    Pong Pong = new Pong();
+        //    Pong pong = new Pong();
+        //    new Morse().PrintLatin("-... ... --- ...  --- ... ---           --- ... ---");
+        //}
             TestActorsSearching();
-
+            
             Resources res = new Resources();
             res.RegisterLoader(".scene", new SceneLoader());
             Scene testScene = res.Load<Scene>("test.scene");

@@ -64,7 +64,6 @@ namespace SharpGame
             game.Initialize(Name);            
             
             game.Run(scene);
-
         }
 
         private void SetPositions()

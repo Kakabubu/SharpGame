@@ -28,6 +28,7 @@ namespace SharpGame
         private Actor DeserializeActor(JToken jactor)
         {
             Actor actor = jactor.ToObject<Actor>();
+            jactor["__components"].Select(DeserializeComponent);
 
             var componentsQuery = jactor["__components"].Select(DeserializeComponent);
             componentsQuery.ToList().ForEach(actor.AddComponent);
