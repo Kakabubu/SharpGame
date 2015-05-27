@@ -92,6 +92,9 @@
     <Compile Include="ResourceManagement\Resources.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".scene\new test.scene" />
+    <None Include=".scene\test.scene" />
+    <None Include=".scene\testActor.draft" />
     <None Include="App.config" />
     <None Include="test.scene">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
