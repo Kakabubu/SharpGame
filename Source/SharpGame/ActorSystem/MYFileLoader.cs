@@ -48,14 +48,14 @@ namespace SharpGame
             return Cmp as ActorComponent;
         }
         #endregion
+
         #region serialize
-        public static string ToJson (object obj)
+        public static void ToJson (object obj)
         {
             if (obj.GetType() == typeof(Scene))
-                return SceneToJson((Scene)obj);
+                File.WriteAllText(PathGenerate((Scene)obj),SceneToJson((Scene)obj));
             else if (obj.GetType() == typeof(Actor))
-                return ActorToJson((Actor)obj);
-            return null;
+                File.WriteAllText(PathGenerate((Actor)obj), ActorToJson((Actor)obj));
         }
        
         private static string SceneToJson(Scene scene)
@@ -70,8 +70,8 @@ namespace SharpGame
 
         private static string ActorToJson(Actor actor)
         {
-            StringBuilder sb = new StringBuilder("{\"Name\":");
-            sb.AppendFormat("\"{0}\",\n\t", actor.Name);
+            StringBuilder sb = new StringBuilder("{\n\t\"Name\":");
+            sb.AppendFormat("\"{0}\",", actor.Name);
             if (actor.Children.Count > 0)
             {
                 sb.AppendFormat("\n\t\"__Children\":[");
@@ -80,18 +80,19 @@ namespace SharpGame
                     sb.Append(ActorToJson(act));
                 }
                 sb.Length -= 1;
+                sb.Append("]\n\t,");
             }
             if (actor.Components.Count > 0)
             {
-                sb.AppendFormat("\n\t\"__Components\":[");
+                sb.Append("\n\t\"__Components\":[");
                 foreach (ActorComponent cmp in actor.Components)
                 {
                     sb.Append(ComponentToJson(cmp));
                 }
                 sb.Length -= 1;
-                sb.AppendFormat("]\n\t},");
+                sb.Append("]\n\t");
             }
-            sb.AppendFormat("}");
+            sb.Append("},");
             return sb.ToString();
         }
 
@@ -127,17 +128,8 @@ namespace SharpGame
             Console.Write("]\n");
         }
         #endregion 
-        #region trash
-        public static void toJson(object obj)
-        {
-            File.WriteAllText(PathGenerate(obj), toJsonString(obj));
-        }
 
-        public static void toJson(List<object> lst)
-        {
-            foreach (object obj in lst)
-                toJson(obj);
-        }
+        #region trash
 
         public static string toJsonString(object obj)
         {
@@ -150,13 +142,19 @@ namespace SharpGame
             return ex.ToString();
         }
 
-        public static string PathGenerate(object obj)
+        public static string PathGenerate(Scene obj)
         {
-            StringBuilder Path = new StringBuilder(@"D:\Anton\Education\Unity 3D C#\Repos\ShrpGm\Source\");
-            Path.AppendFormat("{0}{1}", obj.GetType().Name.ToString(), ".txt");
+            StringBuilder Path = new StringBuilder(@"..\..\.scene\");
+            Path.AppendFormat("{0}.scene", obj.Game.Name);
             return Path.ToString();
         }
 
+        public static string PathGenerate(Actor obj)
+        {
+            StringBuilder Path = new StringBuilder(@"..\..\.scene\");
+            Path.AppendFormat("{0}.actor", obj.Name);
+            return Path.ToString();
+        }
         #endregion
     }
 }

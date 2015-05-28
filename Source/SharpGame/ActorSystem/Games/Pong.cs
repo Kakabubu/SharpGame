@@ -80,7 +80,7 @@ namespace SharpGame
             scene.Game = game;
             scene.Awake();
             scene.Start();
-            Console.WriteLine(Load.ToJson(scene));
+            Load.ToJson(scene);
             //game.Run(scene);
             //game.EnqueueExit();
 
