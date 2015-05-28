@@ -34,5 +34,10 @@ namespace SharpGame
                 }
             }
         }
+
+        private bool IsInBouds(int x, int y)
+        {
+            return x >= 0 && y >= 0 && x < Game.Resolution.x && y < Game.Resolution.y;
+        }
     }
 }

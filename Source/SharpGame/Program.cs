@@ -14,65 +14,16 @@ namespace SharpGame
     {
         static void Main(string[] args)
         {
-            /*  
-             * Good Old Games
-             * Humble Bundle 
-             */
-            //Pong pong = new Pong();
-            //string path = "";
-            //Racket ra = GiveMe<Racket>(path);
-            //var rack = new Racket();
-            //var ball = new Ball();
-            //rack.SetControlsDown(ConsoleKey.S);
-            //List<object> forexport = new List<object>();
-            //forexport.Add(rack); forexport.Add(ball);
-
-            //toJson(forexport);
+            
+            Pong pong = new Pong();
             //new Morse().PrintLatin("-... ... --- ...  --- ... ---           --- ... ---");
+            
+            //Scene test = Load.Scene(@"..\..\.scene\test.scene");
+            //Game game = new Game();
+            //game.TargetFPS = 30;
+            //game.Initialize("");
 
-
-            var obj = JObject.Parse(File.ReadAllText(@"test.scene"));
-            Scene test = new Scene();
-            foreach (var actor in obj["__actors"])
-            {
-                test.AddActor(ParseActor(actor));
-            }
-            Game game = new Game();
-            game.TargetFPS = 30;
-            game.Initialize("");
-
-            game.Run(test);
-
-        }
-        public static Actor ParseActor(JToken JT)
-        {
-            JToken jactor = JT;
-
-            string draft = (string)JT["__draft"];
-            if (draft != null)
-            {
-                var obj = JObject.Parse(File.ReadAllText(draft));
-                obj.Merge(JT);
-                jactor = obj;
-            }
-            Actor act = JT.ToObject<Actor>();
-            foreach (var cmp in jactor["__components"])
-                act.AddComponent(ParseComponent(cmp));
-            foreach (var ch in jactor["__children"])
-                act.AddChild(ParseActor(ch));
-            return act;
-        }
-        public static ActorComponent ParseComponent(JToken JT)
-        {
-            Type type = Type.GetType((string)JT["__type"]);
-            var Cmp = JT.ToObject(type);
-            return Cmp as ActorComponent;
-        }
-
-        public static TObject GiveMe<TObject>(string path) where TObject : class, new()
-        {
-            TObject obj = new TObject();
-            return obj;
+            //game.Run(test);
         }
 
         public static void toJson(object obj)

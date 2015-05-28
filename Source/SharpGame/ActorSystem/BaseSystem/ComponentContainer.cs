@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace SharpGame.Internal
 {
     internal class ComponentContainer : GameEntityContainer<ActorComponent>
     {
+        [JsonIgnore]
         public Actor Actor { get; private set; }
 
         public ComponentContainer(Actor actor)
@@ -32,7 +34,18 @@ namespace SharpGame.Internal
 
             return null;
         }
+        public List<ActorComponent> GetAllComponents()
+        {
+            var foundComponents = new List<ActorComponent>();
 
+            for (int i = 0; i < children.Count; i++)
+            {
+                if (children[i] is TComponent)
+                    foundComponents.Add(children[i] as TComponent);
+            }
+
+            return foundComponents;
+        }
         public List<TComponent> GetAllComponents<TComponent>() where TComponent : class
         {
             var foundComponents = new List<TComponent>();

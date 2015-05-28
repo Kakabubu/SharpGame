@@ -1,6 +1,5 @@
 {
   "__actors": [
-		    {"__draft": "testActor.draft"}
+		    {"__draft": "../../.scene/testActor.draft"}
 		  ]
-		}
 }

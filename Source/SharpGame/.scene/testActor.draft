@@ -26,5 +26,5 @@
 			  "Speed": 1.0
 			}
 	  ],
-	"__children":[]
+	"__children":[{"__draft": "../../.scene/testActorB.draft"}]
 }

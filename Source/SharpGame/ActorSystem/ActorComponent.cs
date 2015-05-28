@@ -1,9 +1,11 @@
 ﻿using SharpGame.Internal;
+using System;
 
 namespace SharpGame
 {
     public abstract class ActorComponent : IGameEntity
     {
+       
         public Actor Actor { get; set; }
 
         public Game Game

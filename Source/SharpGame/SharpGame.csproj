@@ -76,6 +76,7 @@
     <Compile Include="ActorSystem\Games\morse.cs" />
     <Compile Include="ActorSystem\Games\Pong.cs" />
     <Compile Include="ActorSystem\Games\Tetris.cs" />
+    <Compile Include="ActorSystem\MYFileLoader.cs" />
     <Compile Include="ActorSystem\Physics\Physics.cs" />
     <Compile Include="Graphics\GraphicPrimitive.cs" />
     <Compile Include="Graphics\Graphics.cs" />
@@ -93,8 +94,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".scene\new test.scene" />
+    <None Include=".scene\pong.scene" />
     <None Include=".scene\test.scene" />
     <None Include=".scene\testActor.draft" />
+    <None Include=".scene\testActorB.draft" />
     <None Include="App.config" />
     <None Include="test.scene">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

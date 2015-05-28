@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.IO;
 
 namespace SharpGame
 {
@@ -58,6 +60,19 @@ namespace SharpGame
             scene = new Scene();
             SetPositions();
             AddAllToScene();
+
+            JsonSerializerSettings jss = new Newtonsoft.Json.JsonSerializerSettings();
+            Newtonsoft.Json.Serialization.DefaultContractResolver dcr = 
+                new Newtonsoft.Json.Serialization.DefaultContractResolver();
+            dcr.DefaultMembersSearchFlags |= System.Reflection.BindingFlags.NonPublic;
+            jss.ContractResolver = dcr;
+            string str  = Newtonsoft.Json.JsonConvert.SerializeObject(scene, jss);
+
+
+            using (StreamWriter file = new StreamWriter("../../.scene/pong.scene"))
+            {
+                file.Write(str);
+            }
 
             game = new Game();
             game.TargetFPS = 30;

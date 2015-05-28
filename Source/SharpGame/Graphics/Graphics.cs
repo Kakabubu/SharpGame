@@ -28,6 +28,7 @@ namespace SharpGame
        
         public void PointChange (int x,int y, GraphicsPrimitive Symbol)
         {
+            if (IsInBounds(x,y))
             if (Symbol.Deep>=Buffer[x,y].Deep)
             Buffer[x, y] = Symbol;
         }
@@ -50,6 +51,10 @@ namespace SharpGame
                     Buffer[x, y] = GraphicsPrimitive.Empty;
                 }
             }
+        }
+        public bool IsInBounds(int x, int y)
+        {
+            return x < Resolution.x && x >= 0 && y < Resolution.y && y >= 0;
         }
     }
 }

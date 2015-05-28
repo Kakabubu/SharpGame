@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using SharpGame.Internal;
+using Newtonsoft.Json;
 
 namespace SharpGame
 {
     public class Actor : GameEntityContainer<Actor>
     {
+        [JsonIgnore]
         private Scene scene;
-
+        [JsonIgnore]
         public Scene Scene
         {
             get
@@ -24,7 +26,7 @@ namespace SharpGame
                 }
             }
         }
-
+        [JsonIgnore]
         public Actor Parent { get; set; }
 
         public string Name { get; set; }
