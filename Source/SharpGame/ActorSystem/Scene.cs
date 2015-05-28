@@ -10,6 +10,7 @@ namespace SharpGame
     public class Scene : IGameEntity
     {
         public Game Game { get; set; }
+        public List<Actor> Actors{get{return rootActor.Children;}}
        
         private Actor rootActor;
 

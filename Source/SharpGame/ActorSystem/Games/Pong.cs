@@ -60,25 +60,30 @@ namespace SharpGame
             scene = new Scene();
             SetPositions();
             AddAllToScene();
+            //Load.ToJson(scene);
+            //JsonSerializerSettings jss = new Newtonsoft.Json.JsonSerializerSettings();
+            //Newtonsoft.Json.Serialization.DefaultContractResolver dcr = 
+            //    new Newtonsoft.Json.Serialization.DefaultContractResolver();
+            //dcr.DefaultMembersSearchFlags |= System.Reflection.BindingFlags.NonPublic;
+            //jss.ContractResolver = dcr;
+            //string str  = Newtonsoft.Json.JsonConvert.SerializeObject(scene, jss);
 
-            JsonSerializerSettings jss = new Newtonsoft.Json.JsonSerializerSettings();
-            Newtonsoft.Json.Serialization.DefaultContractResolver dcr = 
-                new Newtonsoft.Json.Serialization.DefaultContractResolver();
-            dcr.DefaultMembersSearchFlags |= System.Reflection.BindingFlags.NonPublic;
-            jss.ContractResolver = dcr;
-            string str  = Newtonsoft.Json.JsonConvert.SerializeObject(scene, jss);
 
-
-            using (StreamWriter file = new StreamWriter("../../.scene/pong.scene"))
-            {
-                file.Write(str);
-            }
+            //using (StreamWriter file = new StreamWriter("../../.scene/pong.scene"))
+            //{
+            //    file.Write(str);
+            //}
 
             game = new Game();
             game.TargetFPS = 30;
-            game.Initialize(Name);            
-            
-            game.Run(scene);
+            game.Initialize(Name);
+            scene.Game = game;
+            scene.Awake();
+            scene.Start();
+            Console.WriteLine(Load.ToJson(scene));
+            //game.Run(scene);
+            //game.EnqueueExit();
+
         }
 
         private void SetPositions()

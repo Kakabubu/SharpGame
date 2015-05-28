@@ -63,6 +63,8 @@ namespace SharpGame
         }
 
         #region Children
+        public List<Actor> Children { get { return children; } }
+        public List<ActorComponent> Components { get { return componentContainer.Components; } }
         public override void AddChild(Actor actor)
         {
             actor.Parent = this;
@@ -110,7 +112,7 @@ namespace SharpGame
 
             return foundActors;
         }
-
+        
         private void FindAllChildrenRecursive(Predicate<Actor> predicate, List<Actor> outList)
         {
             if (predicate(this))
