@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SharpGame.Internal;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace SharpGame
 {
@@ -10,6 +11,7 @@ namespace SharpGame
     public class Scene : IGameEntity
     {
         public Game Game { get; set; }
+        [JsonIgnore]
         public List<Actor> Actors{get{return rootActor.Children;}}
        
         private Actor rootActor;
@@ -21,14 +23,6 @@ namespace SharpGame
         }
         
         #region Actors
-        public void LoadFrom(string path)
-        {
-            var obj = JObject.Parse(File.ReadAllText(path));
-            foreach (var Jactor in obj["__actors"])
-            {
-                this.AddActor(Load.Actor(Jactor));
-            }
-        }
         public void AddActor(Actor actor)
         {
             rootActor.AddChild(actor);

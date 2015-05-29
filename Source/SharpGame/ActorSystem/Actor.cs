@@ -28,9 +28,14 @@ namespace SharpGame
         }
         [JsonIgnore]
         public Actor Parent { get; set; }
+        [JsonIgnore]
+        public List<Actor> Children { get { return children; } }
+        [JsonIgnore]
+        public List<ActorComponent> Components { get { return componentContainer.Components; } }
 
         public string Name { get; set; }
 
+        [JsonIgnore]
         public Vector3 WorldPosition
         {
             get
@@ -51,7 +56,7 @@ namespace SharpGame
                 LocalPosition += offset;
             }
         }
-
+        
         public Vector3 LocalPosition { get; set; }
 
         private ComponentContainer componentContainer;
@@ -63,8 +68,7 @@ namespace SharpGame
         }
 
         #region Children
-        public List<Actor> Children { get { return children; } }
-        public List<ActorComponent> Components { get { return componentContainer.Components; } }
+        
         public override void AddChild(Actor actor)
         {
             actor.Parent = this;

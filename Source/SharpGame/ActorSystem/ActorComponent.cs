@@ -1,13 +1,15 @@
-﻿using SharpGame.Internal;
+﻿using Newtonsoft.Json;
+using SharpGame.Internal;
 using System;
 
 namespace SharpGame
 {
     public abstract class ActorComponent : IGameEntity
     {
-       
+        [JsonIgnore]
         public Actor Actor { get; set; }
 
+        [JsonIgnore]
         public Game Game
         {
             get

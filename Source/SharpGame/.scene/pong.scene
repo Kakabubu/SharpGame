@@ -1,45 +1,242 @@
-{"__actors":[{
-	"Name":"Racket",
-	"__Components":[
-		{"__type":"SharpGame.Racket",
-			"Up":"W",
-			"Down":"S"},
-		{"__type":"SharpGame.ASCIIPainter",
-			"Map":"System.Char[,]",
-			"Color":"System.ConsoleColor[,]"},
-		{"__type":"SharpGame.Collider"}]
-	},{
-	"Name":"Racket",
-	"__Components":[
-		{"__type":"SharpGame.Racket",
-			"Up":"UpArrow",
-			"Down":"DownArrow"},
-		{"__type":"SharpGame.ASCIIPainter",
-			"Map":"System.Char[,]",
-			"Color":"System.ConsoleColor[,]"},
-		{"__type":"SharpGame.Collider"}]
-	},{
-	"Name":"Ball",
-	"__Components":[
-		{"__type":"SharpGame.Ball"},
-		{"__type":"SharpGame.Collider"},
-		{"__type":"SharpGame.ASCIIPainter",
-			"Map":"System.Char[,]",
-			"Color":"System.ConsoleColor[,]"}]
-	},{
-	"Name":"GameInterface",
-	"__Components":[
-		{"__type":"SharpGame.GameInterface"},
-		{"__type":"SharpGame.Collider"}]
-	},{
-	"Name":"ScoreCounterLeft",
-	"__Components":[
-		{"__type":"SharpGame.ScoreCounter"},
-		{"__type":"SharpGame.Collider"}]
-	},{
-	"Name":"ScoreCounterRight",
-	"__Components":[
-		{"__type":"SharpGame.ScoreCounter"},
-		{"__type":"SharpGame.Collider"}]
-	}]
+{
+  "Game": {
+    "TargetFPS": 30,
+    "Resolution": {
+      "x": 40,
+      "y": 30
+    },
+    "Name": "Pong",
+    "Physics": {},
+    "Graphics": {},
+    "Resources": {}
+  },
+  "__actors": [
+    {
+      "Name": "Racket",
+      "LocalPosition": {
+        "x": 1.1,
+        "y": 10.0,
+        "z": 0.0
+      },
+      "__components": [
+        {
+          "__type": "SharpGame.Racket",
+          "Up": 87,
+          "Down": 83
+        },
+        {
+          "__type": "SharpGame.ASCIIPainter",
+          "Map": [
+            [
+              " ",
+              "▒",
+              " "
+            ],
+            [
+              " ",
+              "▒",
+              " "
+            ],
+            [
+              " ",
+              "▒",
+              " "
+            ],
+            [
+              " ",
+              "▒",
+              " "
+            ],
+            [
+              " ",
+              "▒",
+              " "
+            ]
+          ],
+          "Color": [
+            [
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              9,
+              0
+            ]
+          ]
+        },
+        {
+          "__type": "SharpGame.Collider"
+        }
+      ]
+    },
+    {
+      "Name": "Racket",
+      "LocalPosition": {
+        "x": 38.9,
+        "y": 10.0,
+        "z": 0.0
+      },
+      "__components": [
+        {
+          "__type": "SharpGame.Racket",
+          "Up": 38,
+          "Down": 40
+        },
+        {
+          "__type": "SharpGame.ASCIIPainter",
+          "Map": [
+            [
+              " ",
+              "▒",
+              " "
+            ],
+            [
+              " ",
+              "▒",
+              " "
+            ],
+            [
+              " ",
+              "▒",
+              " "
+            ],
+            [
+              " ",
+              "▒",
+              " "
+            ],
+            [
+              " ",
+              "▒",
+              " "
+            ]
+          ],
+          "Color": [
+            [
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              9,
+              0
+            ],
+            [
+              0,
+              9,
+              0
+            ]
+          ]
+        },
+        {
+          "__type": "SharpGame.Collider"
+        }
+      ]
+    },
+    {
+      "Name": "Ball",
+      "LocalPosition": {
+        "x": 19.5,
+        "y": 14.0,
+        "z": 0.0
+      },
+      "__components": [
+        {
+          "__type": "SharpGame.Ball"
+        },
+        {
+          "__type": "SharpGame.Collider"
+        },
+        {
+          "__type": "SharpGame.ASCIIPainter",
+          "Map": [
+            [
+              "☻"
+            ]
+          ],
+          "Color": [
+            [
+              9
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "GameInterface",
+      "LocalPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "__components": [
+        {
+          "__type": "SharpGame.GameInterface"
+        },
+        {
+          "__type": "SharpGame.Collider"
+        }
+      ]
+    },
+    {
+      "Name": "ScoreCounterLeft",
+      "LocalPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "__components": [
+        {
+          "__type": "SharpGame.ScoreCounter"
+        },
+        {
+          "__type": "SharpGame.Collider"
+        }
+      ]
+    },
+    {
+      "Name": "ScoreCounterRight",
+      "LocalPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "__components": [
+        {
+          "__type": "SharpGame.ScoreCounter"
+        },
+        {
+          "__type": "SharpGame.Collider"
+        }
+      ]
+    }
+  ]
 }

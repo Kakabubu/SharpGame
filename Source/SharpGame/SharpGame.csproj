@@ -76,7 +76,7 @@
     <Compile Include="ActorSystem\Games\morse.cs" />
     <Compile Include="ActorSystem\Games\Pong.cs" />
     <Compile Include="ActorSystem\Games\Tetris.cs" />
-    <Compile Include="ActorSystem\MYFileLoader.cs" />
+    <Compile Include="ActorSystem\de_serialization.cs" />
     <Compile Include="ActorSystem\Physics\Physics.cs" />
     <Compile Include="Graphics\GraphicPrimitive.cs" />
     <Compile Include="Graphics\Graphics.cs" />

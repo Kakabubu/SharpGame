@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace SharpGame
             this.y = y;
             this.z = z;
         }
-
+        [JsonIgnore]
         public float LengthSquared
         {
             get
@@ -34,7 +35,7 @@ namespace SharpGame
                 return x * x + y * y + z * z;
             }
         }
-
+        [JsonIgnore]
         public float Length
         {
             get
@@ -43,7 +44,7 @@ namespace SharpGame
                 return (float)System.Math.Sqrt(LengthSquared);
             }
         }
-
+        [JsonIgnore]
         public Vector3 Normalized
         {
             get

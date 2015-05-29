@@ -1,0 +1,45 @@
+{"__actors":[{"Name":"Racket",
+	
+	"__Components":[
+		{"__type":"SharpGame.Racket",
+			"Up":"W",
+			"Down":"S"},
+		{"__type":"SharpGame.ASCIIPainter",
+			"Map":"System.Char[,]",
+			"Color":"System.ConsoleColor[,]"},
+		{"__type":"SharpGame.Collider"}]
+	},}{"Name":"Racket",
+	
+	"__Components":[
+		{"__type":"SharpGame.Racket",
+			"Up":"UpArrow",
+			"Down":"DownArrow"},
+		{"__type":"SharpGame.ASCIIPainter",
+			"Map":"System.Char[,]",
+			"Color":"System.ConsoleColor[,]"},
+		{"__type":"SharpGame.Collider"}]
+	},}{"Name":"Ball",
+	
+	"__Components":[
+		{"__type":"SharpGame.Ball"},
+		{"__type":"SharpGame.Collider"},
+		{"__type":"SharpGame.ASCIIPainter",
+			"Map":"System.Char[,]",
+			"Color":"System.ConsoleColor[,]"}]
+	},}{"Name":"GameInterface",
+	
+	"__Components":[
+		{"__type":"SharpGame.GameInterface"},
+		{"__type":"SharpGame.Collider"}]
+	},}{"Name":"ScoreCounterLeft",
+	
+	"__Components":[
+		{"__type":"SharpGame.ScoreCounter"},
+		{"__type":"SharpGame.Collider"}]
+	},}{"Name":"ScoreCounterRight",
+	
+	"__Components":[
+		{"__type":"SharpGame.ScoreCounter"},
+		{"__type":"SharpGame.Collider"}]
+	},]
+}
