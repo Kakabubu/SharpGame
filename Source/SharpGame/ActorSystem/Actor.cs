@@ -124,6 +124,13 @@ namespace SharpGame
             
             children.ForEach(child => child.FindAllChildrenRecursive(predicate, outList));
         }
+
+        public void DestroyChild(Actor that)
+        {
+            children.Remove(that);
+            that.OnDestroy();
+        }
+
         #endregion
 
         #region Components

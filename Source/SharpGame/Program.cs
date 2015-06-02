@@ -14,7 +14,19 @@ namespace SharpGame
     {
         static void Main(string[] args)
         {
-            Pong pong = new Pong();
+            //Pong pong = new Pong();
+
+
+            Actor Ship = new Actor();
+            Ship.AddComponent(new Ship());
+            Ship.AddComponent(new ASCIIPainter());
+            Scene Scene = new Scene();
+            Game Game = new Game();
+            Scene.AddActor(Ship);
+            Game.Initialize("space");
+            Game.TargetFPS = 60;
+            Game.Run(Scene);
+
 
             //Scene test = Load.Scene(@"..\..\.scene\test.scene");
             //Game game = new Game();

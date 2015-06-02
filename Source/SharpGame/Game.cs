@@ -22,7 +22,7 @@ namespace SharpGame
         public bool Initialize(string Nm)
         {
             Name = Nm;
-            Resolution = new Resolution(40,42);
+            Resolution = new Resolution(20,20);
             Physics = new Physics(Resolution);
             Graphics = new Graphics(Resolution);
             Resources = new Resources();

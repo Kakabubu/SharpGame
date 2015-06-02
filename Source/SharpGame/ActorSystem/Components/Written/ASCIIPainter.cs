@@ -67,6 +67,19 @@ namespace SharpGame
                         Map = new char[1,1]{{'0'}};
                         break;
                     }
+                case "Ship":
+                        {
+                            Map = new char[2,5]{{' ','▒','▒','▒',' '},{'▒','▒','▒','▒','▒'}};
+                            Color = new ConsoleColor[2, 5] { { ConsoleColor.Blue, ConsoleColor.Blue, ConsoleColor.Black, ConsoleColor.Blue, ConsoleColor.Blue }, 
+                                                             { ConsoleColor.Blue, ConsoleColor.Blue, ConsoleColor.Blue, ConsoleColor.Blue, ConsoleColor.Blue } };
+                            break;
+                        }
+                case "Projectile":
+                        {
+                            Map = new char[1, 1] { { '☻' } };
+                            Color = new ConsoleColor [1,1]{ { ConsoleColor.Red } };
+                            break;
+                        }
                 default:
                     {
                         Debug.Assert (false,
