@@ -57,7 +57,7 @@ namespace SharpGame
                 case "GameInterface":
                     for (int x = 1; x < Game.Resolution.x-1; x++)
                     {
-                        AddPoint(new Vector3(x, 0, 0));
+                        AddPoint(new Vector3(x, 1, 0));
                         AddPoint(new Vector3(x, Game.Resolution.y - 1, 0));
                     } 
                     break;

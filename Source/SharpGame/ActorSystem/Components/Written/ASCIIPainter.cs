@@ -75,7 +75,7 @@ namespace SharpGame
                         Color = new ConsoleColor[1, 1] { { ConsoleColor.Black } };
                         break;
                     }
-            } /*Think it shoud be somewhere in extended libruary*/
+            } /*should be serialized and deleted*/
         }
         public void ActorToBuffer()
         {

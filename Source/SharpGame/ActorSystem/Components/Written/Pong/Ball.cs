@@ -1,9 +1,10 @@
 ﻿using System;
-
+using Newtonsoft.Json;
 namespace SharpGame
 {
     class Ball : ActorComponent
     {
+        [JsonProperty]
         private double speed;
         private double Facing;
         private double facing
@@ -81,7 +82,8 @@ namespace SharpGame
         public void Centralize ()
         {
             Actor.LocalPosition = new Vector3((Game.Resolution.x - 1) / 2 + 0.5f, (Game.Resolution.y - 1) / 2, 0);
-            facing = 45;
+            facing = 90;
+            speed = 10;
         }
         public void PrintFacing(int x, int y)
         {

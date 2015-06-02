@@ -21,8 +21,8 @@ namespace SharpGame
         public Physics(Resolution Resolution)
         {
             Map = new List<Actor>[(int)Resolution.x, (int)Resolution.y];
-            for (int y = 0; y < (int)Resolution.y; y++)
-                for (int x = 0; x < (int)Resolution.x; x++)
+            for (int x = 0; x < (int)Resolution.x; x++)
+                for (int y = 0; y < (int)Resolution.y; y++)
                     Map[x, y] = new List<Actor>(0);
         }
 

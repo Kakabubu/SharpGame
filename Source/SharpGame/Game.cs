@@ -22,7 +22,7 @@ namespace SharpGame
         public bool Initialize(string Nm)
         {
             Name = Nm;
-            Resolution = new Resolution(40,30);
+            Resolution = new Resolution(40,42);
             Physics = new Physics(Resolution);
             Graphics = new Graphics(Resolution);
             Resources = new Resources();
@@ -50,9 +50,9 @@ namespace SharpGame
 
                 Graphics.BufferClear();
                 scene.Update(delta);
-                Physics.BufferClear();
                 scene.Draw(delta);
                 Graphics.DrawFrame();
+                Physics.BufferClear();
                 //Graphics.SwapBuffers();
 
                 SleepToMatchFramerate(TargetFPS, time.ElapsedMilliseconds / 1000f);
@@ -72,7 +72,7 @@ namespace SharpGame
         private void Shutdown()
         {
             Graphics = null;
-
+            Physics = null;
             initialized = false;
         }
 

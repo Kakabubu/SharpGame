@@ -67,11 +67,10 @@ namespace SharpGame
             scene.Game = game;
             scene.Awake();
             scene.Start();
-            File.WriteAllText("../../.scene/pong.scene",Load.ToJson(scene).ToString());
+            File.WriteAllText("../../.scene/pong.scene", Load.ToJson(scene).ToString());
             
             //game.Run(scene);
             //game.EnqueueExit();
-
         }
 
         private void SetPositions()
