@@ -54,7 +54,7 @@ namespace SharpGame
             bullet.Name = "Projectile";
             bullet.AddComponent(new Projectile());
             bullet.AddComponent(new ASCIIPainter());
-            bullet.LocalPosition = Actor.LocalPosition + Vector3.Up * 3f;
+            bullet.LocalPosition = Actor.LocalPosition ;
             Actor.Scene.AddActor(bullet);
         }
     }

@@ -16,13 +16,17 @@ namespace SharpGame
         {
             //Pong pong = new Pong();
 
-
             Actor Ship = new Actor();
+            Actor Enemyes = new Actor("ShuoController");
+            Actor Borders = new Actor("SS");
+            Borders.AddComponent(new Collider());
             Ship.AddComponent(new Ship());
             Ship.AddComponent(new ASCIIPainter());
+            Enemyes.AddComponent(new ShattlesGenerator());
             Scene Scene = new Scene();
             Game Game = new Game();
             Scene.AddActor(Ship);
+            Scene.AddActor(Enemyes);
             Game.Initialize("space");
             Game.TargetFPS = 60;
             Game.Run(Scene);

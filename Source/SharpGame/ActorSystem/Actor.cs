@@ -183,8 +183,13 @@ namespace SharpGame
         public void OnCollide (Actor Exciter)
         {
             componentContainer.OnCollide(Exciter);
-            foreach (Actor act in children)
-                act.OnCollide(Exciter);
+        }
+
+        public bool InBounds()
+        {
+            return this.WorldPosition.x < scene.Game.Resolution.x-1 &&
+                   this.WorldPosition.y < scene.Game.Resolution.y-1 &&
+                   this.WorldPosition.x>1 && this.WorldPosition.y>1;
         }
     }
 }

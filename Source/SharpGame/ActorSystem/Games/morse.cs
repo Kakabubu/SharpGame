@@ -43,9 +43,10 @@ namespace SharpGame
              ""
         };
     #endregion
-        
+       
         public string DecodeMorse(string Code)
         {
+            var TEMPS = int.Parse("22");
             StringBuilder Text = new StringBuilder();
             int end=0;
             int start = 0;

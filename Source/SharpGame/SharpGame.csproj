@@ -71,6 +71,8 @@
     <Compile Include="ActorSystem\Components\TestComponentB.cs" />
     <Compile Include="ActorSystem\BaseSystem\GameEntityContainer.cs" />
     <Compile Include="ActorSystem\BaseSystem\IGameEntity.cs" />
+    <Compile Include="ActorSystem\Components\Written\Space Invaders\ShattleOnCollide.cs" />
+    <Compile Include="ActorSystem\Components\Written\Space Invaders\ShattlesGenerator.cs" />
     <Compile Include="ActorSystem\Components\Written\Space Invaders\Projectile.cs" />
     <Compile Include="ActorSystem\Components\Written\Space Invaders\Ship.cs" />
     <Compile Include="ActorSystem\Components\Written\Tetris\Piece.cs" />

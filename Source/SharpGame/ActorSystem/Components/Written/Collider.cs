@@ -46,11 +46,11 @@ namespace SharpGame
                     break;
                 case "Ball":
                     {
-                        ColliderPoints.Add(new Vector3(-1, 0, 0)); 
-                        ColliderPoints.Add(new Vector3(0, 0, 0)); 
-                        ColliderPoints.Add(new Vector3(1, 0, 0));
-                        ColliderPoints.Add(new Vector3(0, 1, 0));
-                        ColliderPoints.Add(new Vector3(0, -1, 0));
+                        ColliderPoints.Add(Vector3.Zero); 
+                        ColliderPoints.Add(Vector3.Up); 
+                        ColliderPoints.Add(Vector3.Down);
+                        ColliderPoints.Add(Vector3.Left);
+                        ColliderPoints.Add(Vector3.Right);
                     }
                     break;
 
@@ -71,6 +71,15 @@ namespace SharpGame
                 case "ScoreCounterRight":
                     for (int y = 0; y < Game.Resolution.y; y++)
                     {
+                        AddPoint(new Vector3(Game.Resolution.x - 1, y, 0));
+                    }
+                    break;
+                case "Shattle1": AddPoint(Vector3.Zero);
+                    break;
+                case "SS":
+                    for (int y = 0; y < Game.Resolution.y; y++)
+                    {
+                        AddPoint(new Vector3(0, y, 0));
                         AddPoint(new Vector3(Game.Resolution.x - 1, y, 0));
                     }
                     break;
