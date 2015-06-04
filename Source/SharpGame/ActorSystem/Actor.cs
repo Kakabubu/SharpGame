@@ -47,7 +47,6 @@ namespace SharpGame
                     offset += parent.LocalPosition;
                     parent = parent.Parent;
                 }
-
                 return LocalPosition + offset;
             }
             set
@@ -73,7 +72,6 @@ namespace SharpGame
         {
             actor.Parent = this;
             actor.Scene = Scene;
-
             base.AddChild(actor);
         }
 
@@ -87,7 +85,6 @@ namespace SharpGame
                 if (foundActor != null)
                     return foundActor;
             }
-
             return null;
         }
 
@@ -104,7 +101,6 @@ namespace SharpGame
                     if (foundActor != null)
                         return foundActor;
                 }
-
                 return null;
             }
         }
@@ -113,7 +109,6 @@ namespace SharpGame
         {
             var foundActors = new List<Actor>();
             children.ForEach(child => child.FindAllChildrenRecursive(predicate, foundActors));
-
             return foundActors;
         }
         
@@ -121,14 +116,17 @@ namespace SharpGame
         {
             if (predicate(this))
                 outList.Add(this);
-            
             children.ForEach(child => child.FindAllChildrenRecursive(predicate, outList));
         }
 
-        public void DestroyChild(Actor that)
+        private void DestroyChild(Actor that)
         {
             children.Remove(that);
             that.OnDestroy();
+        }
+        public void DestroyImmediate()
+        {
+            Parent.DestroyChild(this);
         }
 
         #endregion
@@ -154,21 +152,18 @@ namespace SharpGame
         public override void Start()
         {
             componentContainer.Start();
-
             base.Start();
         }
 
         public override void Update(float deltaTime)
         {
             componentContainer.Update(deltaTime);
-
             base.Update(deltaTime);
         }
 
         public override void Draw(float deltaTime)
         {
             componentContainer.Draw(deltaTime);
-
             base.Draw(deltaTime);
         }
 
@@ -176,9 +171,9 @@ namespace SharpGame
         {
             componentContainer.OnDestroy();
             componentContainer = null;
-
             base.OnDestroy();
         }
+
         #endregion
         public void OnCollide (Actor Exciter)
         {

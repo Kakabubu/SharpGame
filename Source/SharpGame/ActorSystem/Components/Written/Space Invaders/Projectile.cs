@@ -24,11 +24,11 @@ namespace SharpGame
         {
             if (Actor.LocalPosition.y > 0)
                 MoveForward(D);
-            else Actor.Parent.DestroyChild(Actor);
         }
 
         public override void OnCollide(Actor Exciter)
-        { }
+        { if (Exciter.Name!=this.GetType().Name)
+            Actor.Scene.ForDestroy(Actor); }
 
         public override void OnDestroy()
         { }

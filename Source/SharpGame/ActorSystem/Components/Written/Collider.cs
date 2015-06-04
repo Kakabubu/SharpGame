@@ -76,11 +76,19 @@ namespace SharpGame
                     break;
                 case "Shattle1": AddPoint(Vector3.Zero);
                     break;
+                case "Shattle2": AddPoint(Vector3.Zero);
+                    break;
+                case "Shattle3": AddPoint(Vector3.Zero);
+                    break;
                 case "SS":
                     for (int y = 0; y < Game.Resolution.y; y++)
                     {
                         AddPoint(new Vector3(0, y, 0));
                         AddPoint(new Vector3(Game.Resolution.x - 1, y, 0));
+                    }break;
+                case "Projectile":
+                    {
+                        AddPoint(Vector3.Zero);
                     }
                     break;
                 default: break;

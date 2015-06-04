@@ -22,7 +22,7 @@
             for (int y = 1; y <= rows; y++)
                 for (int x = 10; x <= Res.x - 4; x += 2)
                 {
-                    Actor act = new Actor("Shattle"+y);
+                    Actor act = new Actor("Shattle1");
                     act.LocalPosition = new Vector3(x - Actor.LocalPosition.x,y*2,0);
                     act.AddComponent(new ShattleOnCollide());
                     act.AddComponent(new ASCIIPainter());

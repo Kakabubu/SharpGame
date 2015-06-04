@@ -10,8 +10,21 @@
         }
         public override void Update(float deltaTime)
         {
-            if (!Actor.InBounds())
-                Actor.Parent.OnCollide(Actor);
+        }
+
+        public override void OnCollide(Actor Exciter)
+        {
+            switch (Exciter.Name)
+            {
+                case "SS":
+                    Actor.Parent.LocalPosition += Vector3.Down;
+                    Actor.Parent.OnCollide(Exciter);
+                    break;
+                case "Projectile":
+                    Actor.Scene.ForDestroy(Actor);
+                    break;
+                default: break;
+            }
         }
     }
 }

@@ -13,13 +13,25 @@ namespace SharpGame
         public Game Game { get; set; }
         [JsonIgnore]
         public List<Actor> Actors{get{return rootActor.Children;}}
-       
+        private List<Actor> forDestroy = new List<Actor>();
         private Actor rootActor;
 
         public Scene()
         {
             rootActor = new Actor("Root");
             rootActor.Scene = this;
+        }
+        public void ForDestroy(Actor that)
+        {
+           forDestroy.Add(that);
+        }
+
+        public void PostUpdate()
+        {
+            foreach (Actor act in forDestroy)
+                act.DestroyImmediate();
+
+            forDestroy.Clear();
         }
         
         #region Actors

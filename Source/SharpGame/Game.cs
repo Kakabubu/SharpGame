@@ -51,8 +51,10 @@ namespace SharpGame
                 Graphics.BufferClear();
                 scene.Update(delta);
                 scene.Draw(delta);
+                
                 Graphics.DrawFrame();
                 Physics.BufferClear();
+                scene.PostUpdate();
                 //Graphics.SwapBuffers();
 
                 SleepToMatchFramerate(TargetFPS, time.ElapsedMilliseconds / 1000f);
